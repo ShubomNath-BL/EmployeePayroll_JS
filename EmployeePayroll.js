@@ -147,6 +147,32 @@ console.log("Full working days: "+fullWorkingDays);
 console.log("Part working days: "+partWorkingDays);
 console.log("Non working days: "+nonWorkingDays);
 
-//UC10- Object creation
+//UC10-Object creation
 console.log("---------------UC10--------------");
 console.log("Daily wage earnned: "+empDailyHrsAndWageArray);
+
+//UC11-Object operations using Arrow Functions
+console.log("---------------UC11A--------------");
+let TotalWages = empDailyHrsAndWageArray
+                 .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage>0)
+                 .reduce((totalWage, dailyHrsAndWage) => totalWage += dailyHrsAndWage.dailyWage, 0);
+let TotalHrs = empDailyHrsAndWageArray
+               .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage>0)
+               .reduce((totalHr, dailyHrsAndWage) => totalHr += dailyHrsAndWage.dailyHours, 0); 
+console.log("Total Hours: "+TotalHrs+" Total Wages: "+TotalWages);     
+ 
+console.log("---------------UC11B--------------");
+fullTimeWorkArray = empDailyHrsAndWageArray.filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours==8)
+                    .map(dailyHrsAndWage => dailyHrsAndWage.toString());
+console.log(fullTimeWorkArray);  
+
+console.log("---------------UC11C--------------");                  
+partTimeWorkArray = empDailyHrsAndWageArray.filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours==4)
+                    .map(dailyHrsAndWage => dailyHrsAndWage.toString());
+console.log(partTimeWorkArray);  
+
+console.log("---------------UC11D--------------");  
+absentWorkArray = empDailyHrsAndWageArray.filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours==0)
+                    .map(dailyHrsAndWage => dailyHrsAndWage.toString());
+console.log(absentWorkArray);  
+               
