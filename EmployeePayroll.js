@@ -5,6 +5,7 @@ Below program to Calculate Daily Employee Wage based onpart time or full time wo
 - Calculate Wages till a condition of total working hours of 160 or max days of 20 is
 reached for a month.
 - Storing Daily Wage in a Array.
+- Store the Day and the Daily Wage along with the Total Wage useing Map.
 */
 console.log("Welcome to Employee payroll");
 const isPatrTime = 1;
@@ -18,6 +19,7 @@ let empHours = 0;
 let workingDays = 0;
 let totalEmpHrs = 0;
 let empWageArray = new Array();
+let empWageMap = new Map();
 //check if employee is part time, full time or absent.
 function getWorkHours(empCheck){
     switch(empCheck){
@@ -42,9 +44,10 @@ while(empHours<=totalWorkingHours && workingDays<totalWorkingDays){
     empHours = getWorkHours(empCheck);
     totalEmpHrs += empHours;
     empWageArray.push(calculateDailyWage(empHours));
+    empWageMap.set(workingDays, calculateDailyWage(empHours));
 }
 let empWage = calculateDailyWage(totalEmpHrs);  //Calculating total wages.
-console.log(empWageArray);
+console.log(empWageMap);
 console.log("Total wage is: "+empWage);
 console.log("Total Working Days: "+workingDays);
 console.log("Total Employee hours: "+totalEmpHrs);
