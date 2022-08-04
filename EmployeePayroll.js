@@ -1,8 +1,29 @@
+/*
+Below program to Calculate Daily Employee Wage based onpart time or full time work 
+- Use Math.Random to check absent, Part Time or Full Time.
+- Assume Part Time is 4 Hrs and Full time is 8 Hrs and per hour wage is $20.
+*/
 console.log("Welcome to Employee payroll");
-const isAbsent = 0;
-let empCheck = Math.floor(Math.random()*10)%2;
-if(empCheck == isAbsent){
-    console.log("Employee is absent");
-}else{
-    console.log("Employee is present");
+const isPatrTime = 1;
+const isFullTime = 2;
+const partTimeHours = 4;
+const fullTimeHours = 8;
+const wagePerHours = 20;
+let empHours = 0;
+let empCheck = Math.floor(Math.random()*10)%3;
+switch(empCheck){
+    case isPatrTime:
+        console.log("Employee is part time");
+        empHours = partTimeHours;
+        break;
+    case isFullTime:
+        console.log("Employee is full time");
+        empHours = fullTimeHours;
+        break;
+    default:
+        console.log("Employee is absent");
+        empHours = 0;
+        break;        
 }
+let empWage = empHours * wagePerHours;
+console.log(empWage);
