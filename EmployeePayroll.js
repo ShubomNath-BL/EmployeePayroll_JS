@@ -21,6 +21,7 @@ let totalEmpHrs = 0;
 let empWageArray = new Array();
 let empHrsMap = new Map();
 let empDailyWageMap = new Map();
+let empDailyHrsAndWageArray = new Array();
 //check if employee is part time, full time or absent.
 function getWorkHours(empCheck){
     switch(empCheck){
@@ -47,6 +48,16 @@ while(empHours<=totalWorkingHours && workingDays<totalWorkingDays){
     empWageArray.push(calculateDailyWage(empHours));
     empHrsMap.set(workingDays, empHours);
     empDailyWageMap.set(workingDays, calculateDailyWage(empHours));
+    empDailyHrsAndWageArray.push(
+        {
+            dayNum:workingDays,
+            dailyHours:empHours,
+            dailyWage:calculateDailyWage(empHours),
+            toString(){
+                return "\n Day "+this.dayNum+" => Working hours is "+this.dailyHours+
+                " And wage earnned = "+this.dailyWage
+            },
+    });
 }
 let empWage = calculateDailyWage(totalEmpHrs);  //Calculating total wages.
 console.log("Total wage is: "+empWage);
@@ -135,3 +146,7 @@ empHrsMap.forEach((values, key, map) => {
 console.log("Full working days: "+fullWorkingDays);
 console.log("Part working days: "+partWorkingDays);
 console.log("Non working days: "+nonWorkingDays);
+
+//UC10- Object creation
+console.log("---------------UC10--------------");
+console.log("Daily wage earnned: "+empDailyHrsAndWageArray);
